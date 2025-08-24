@@ -2,7 +2,7 @@
 
 ## Projects
 
-A series of databases have been prepared using SQLite and Microsoft SQL Server.
+A series of relational databases have been prepared using SQLite and Microsoft SQL Server.
 
 
 ### SQLite Requirements:
@@ -42,7 +42,6 @@ CREATE TABLE Employees (
 );
 ```
 
-
 Departments table: Design a table to store department details, including a unique identifier and department name. Each department should have a manager, who is one of the employees.
 ```
 CREATE TABLE Departments (
@@ -52,7 +51,6 @@ CREATE TABLE Departments (
     FOREIGN KEY (Manager_ID) REFERENCES Employees(Employee_ID)
 );
 ```
-
 
 Projects table: Develop a table to manage projects, where each project has a unique identifier, name, start date, and optional end date. Each project should be managed by an employee.
 ```
@@ -67,14 +65,12 @@ CREATE TABLE Projects (
 ```
 
 
-
 ### Altering Tables
 
 Add a column to the Employees table to store phone numbers.
 ```
 ALTER TABLE Employees ADD COLUMN Phone_Number TEXT;
 ```
-
 
 Make sure that every department has a name by including a NOT NULL constraint on the DepartmentName column.
 ```
@@ -98,18 +94,15 @@ DROP TABLE IF EXISTS Departments;
 ALTER TABLE newDepartments RENAME TO Departments;
 ```
 
-
 Rename the HireDate column in the Employees table to StartDate.
 ```
 ALTER TABLE Employees RENAME COLUMN Hire_Date TO Start_Date;
 ```
 
-
 Remove the Department column from the Employees table, as it is no longer needed.
 ```
 ALTER TABLE Employees DROP COLUMN Department;
 ```
-
 
 
 ### Dropping Tables
@@ -118,7 +111,6 @@ Drop the Departments table entirely from the database.
 ```
 DROP TABLE IF EXISTS Departments;
 ```
-
 
 Create a temporary table named TempProjects for testing purposes and then drop it.
 ```
@@ -129,7 +121,6 @@ CREATE TEMPORARY TABLE TempProjects (
 
 DROP TABLE TempProjects;
 ```
-
 
 Write a script to drop the Employees table only if it exists.
 ```
@@ -144,12 +135,10 @@ Create an index on the Email column in the Employees table to speed up email sea
 CREATE INDEX idx_email ON Employees(Email);
 ```
 
-
 Create a composite index on the LastName and FirstName columns in the Employees table to improve full name searches.
 ```
 CREATE INDEX idx_fullname ON Employees(Last_Name, First_Name);
 ```
-
 
 Drop the index on the Email column if it is no longer needed.
 ```
