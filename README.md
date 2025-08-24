@@ -308,23 +308,10 @@ CREATE DATABASE student_management;
 
 3. Create two tables in the database:
 Students table: Stores information about students (id, name, age, grade).
-```
-CREATE TABLE students (
-    id INTEGER PRIMARY KEY,
-    name TEXT,
-    age INTEGER,
-    grade TEXT
-);
-```
+
 
 Teachers table: Stores information about teachers (id, name, subject).
-```
-CREATE TABLE teachers (
-    id INTEGER PRIMARY KEY,
-    name TEXT,
-    subject TEXT
-);
-```
+
 
 3. Create a user named teacher_user without any initial privileges.
 ```
