@@ -12,7 +12,7 @@ A series of relational databases have been prepared using SQLite and Microsoft S
 
 ### Microsoft SQL Server (MSSQL) Requirements:
  - Install SQL Server Management Studio (SSMS)
- - (If using VS Code) install SQLite3 Editor by yy0931 extension
+ - (If using VS Code) install SQL Server (mssql) by Microsoft extension
 
 
 ## 1. TechNova Solutions (SQLite)
