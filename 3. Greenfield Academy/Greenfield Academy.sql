@@ -1,11 +1,11 @@
--- 1) GRANT Statement
+-- 1) Grant Statement
 
 -- 1. Create a new database called student_management.
 -- CREATE DATABASE student_management;
 
 
 -- 2. Create two tables in the database:
--- students: Stores information about students (id, name, age, grade).USE student_management;
+-- 2a. students: Stores information about students (id, name, age, grade).USE student_management;
 -- CREATE TABLE students (
 --     id INTEGER PRIMARY KEY,
 --     name TEXT,
@@ -13,7 +13,7 @@
 --     grade TEXT
 -- );
 
--- teachers: Stores information about teachers (id, name, subject).
+-- 2b. teachers: Stores information about teachers (id, name, subject).
 -- CREATE TABLE teachers (
 --     id INTEGER PRIMARY KEY,
 --     name TEXT,
@@ -30,7 +30,7 @@
 -- GRANT SELECT, INSERT ON dbo.students TO teacher_user;
 
 
--- -- 5. Verify that teacher_user can now select and insert records in the students table but cannot delete or update any records.
+-- 5. Verify that teacher_user can now select and insert records in the students table but cannot delete or update any records.
 -- SELECT * FROM dbo.students;
 -- INSERT INTO dbo.students (ID, name, age, grade) VALUES (1, 'John Doe', 16, '10th Grade');
 -- DELETE FROM dbo.students WHERE id = 1;
@@ -41,7 +41,7 @@
 -- *******************************************************
 
 
--- Lesson 2: REVOKE Statement
+-- 2) Revoke Statement
 
 -- 1. Use the same database student_management.
 -- USE student_management;
@@ -78,7 +78,7 @@
 -- *******************************************************
 
 
--- Lesson 3: Roles and Privileges
+-- 3) Roles and Privileges
 
 -- 1. Create a new role called student_role and assign it SELECT privileges on the students table.
 -- CREATE ROLE student_role;

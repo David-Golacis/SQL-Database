@@ -1,10 +1,8 @@
 -- database: AthleteZone.db
--- Manage an online store's database by performing essential SQL operations. The project focuses on inserting, updating, deleting records, and ensuring data consistency through transactions.
 
 -- 1) Insert Statements
 
--- Customers Table:
--- Create a table to store customer information, including a unique identifier for each customer, their first and last names, email address, and the date they joined the store.
+-- Customers Table: Create a table to store customer information, including a unique identifier for each customer, their first and last names, email address, and the date they joined the store.
 CREATE TABLE Customers (
     CustomerID INTEGER  PRIMARY KEY AUTOINCREMENT,
     FirstName TEXT      NOT NULL,
@@ -22,8 +20,7 @@ VALUES
     ('Alice', 'Johnson', 'alice.johnson@example.com', '2024-03-05');
 
 
--- Products Table:
--- Create a table to hold product details, including a unique product identifier, product name, price, and available stock quantity.
+-- Products Table: Create a table to hold product details, including a unique product identifier, product name, price, and available stock quantity.
 CREATE TABLE Products (
     ProductID INTEGER       PRIMARY KEY AUTOINCREMENT,
     ProductName TEXT        NOT NULL,
@@ -40,8 +37,7 @@ VALUES
     ('Headphones', 199.99, 200);
 
 
--- Orders Table:
--- Design a table to track customer orders. This table should include an order identifier, the customer's identifier (linking to the Customers table), the product's identifier (linking to the Products table), the order date, and the quantity ordered.
+-- Orders Table: Design a table to track customer orders. This table should include an order identifier, the customer's identifier (linking to the Customers table), the product's identifier (linking to the Products table), the order date, and the quantity ordered.
 CREATE TABLE Orders (
     OrderID INTEGER     PRIMARY KEY AUTOINCREMENT,
     CustomerID INTEGER,
@@ -62,7 +58,7 @@ VALUES
 
 -- *******************************************************
 
--- 2) - Update Statement
+-- 2) Update Statement
 
 -- Customers Table
 -- One of the customers has updated their email address. Let's say John Doe's new email address is john.doe.new@example.com. Identify the customer and modify their record to reflect this change.
@@ -82,7 +78,7 @@ UPDATE Orders SET Quantity = 1 WHERE OrderID = 2;
 
 -- 3) Delete Statement
 
--- First, disable foreign key constraint to avoid error
+-- First, disable the foreign key constraint to avoid errors
 PRAGMA foreign_keys = 0;
 
 
