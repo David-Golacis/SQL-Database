@@ -295,6 +295,8 @@ Inside the SQL file, the following problems were solved:
  - Setting up user accounts with varying levels of access
  - Implementing and managing database privileges
  - Creating and assigning roles for different types of users
+ - Simplifying data access for non-technical staff through the use of views.
+ - Automating student registration processes with stored procedures.
 
 These tasks will help Greenfield Academy maintain the confidentiality and integrity of its student and teacher data while allowing appropriate access to authorised personnel. The lessons will guide the database administrator through the process of granting privileges, revoking them when necessary, and using roles to manage user permissions efficiently.
 
@@ -308,10 +310,10 @@ CREATE DATABASE student_management;
 
 3. Create two tables in the database:
 Students table: Stores information about students (id, name, age, grade).
-
+![Student Table](https://github.com/David-Golacis/SQL-Database/blob/main/3.%20Greenfield%20Academy/Students%20Table.png)
 
 Teachers table: Stores information about teachers (id, name, subject).
-
+![Teachers Table](https://github.com/David-Golacis/SQL-Database/blob/main/3.%20Greenfield%20Academy/Teachers%20Table.png)
 
 3. Create a user named teacher_user without any initial privileges.
 ```
@@ -409,16 +411,62 @@ DELETE FROM students WHERE CAST(name AS VARCHAR(MAX)) = 'Test User';
 ```
 
 
+### Creating Views
+
+1. Create a view named student_overview that shows the ID, name, and grade columns from the student's table.
+```
+CREATE VIEW dbo.student_overview AS 
+SELECT id, name, grade
+FROM students;
+```
+
+2. Query the student_overview view to verify it displays the correct data.
+```
+SELECT * FROM student_overview;
+```
+
+4. Modify the view to include a calculated field that shows age categorised as 'Minor' if the age is less than 18, and 'Adult' otherwise.
+```
+DROP VIEW IF EXISTS student_overview;
+
+CREATE VIEW student_overview AS
+SELECT 
+    id,
+    name,
+    grade,
+    CASE
+        WHEN age < 18 THEN 'Minor'
+        ELSE 'Adult'
+    END AS age_category
+FROM students;
+
+SELECT * FROM student_overview;
+```
 
 
+### Stored Procedures
 
+1. Create a stored procedure named add_student that takes the name, age, and grade as parameters and inserts a new record into the students table.
+```
+CREATE PROCEDURE add_student
+    @student_id INTEGER,
+    @student_name VARCHAR(50),
+    @student_age INT,
+    @student_grade VARCHAR(10)
+AS
+    SET NOCOUNT ON;
+    INSERT INTO students (ID, name, age, grade) 
+    VALUES (
+        @student_id,
+        @student_name,
+        @student_age,
+        @student_grade);
+```
 
-
-
-
-
-
-
+2. Run the stored procedure to add a new student.
+```
+EXECUTE add_student @student_id = 1, @student_name = 'Alice Johnson', @student_age = 17, @student_grade = '12th Grade';
+```
 
 
 
