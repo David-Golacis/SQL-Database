@@ -106,3 +106,60 @@
 -- INSERT INTO students (ID, name, age, grade) VALUES (4, 'Test User', 18, '12th Grade');
 -- UPDATE students SET grade = '11th Grade' WHERE CAST(name AS VARCHAR(MAX)) = 'Test User';
 -- DELETE FROM students WHERE CAST(name AS VARCHAR(MAX)) = 'Test User';
+
+
+-- *******************************************************
+
+
+-- 4) Creating Views
+
+-- 1. Create a view named student_overview that shows the id, name, and grade columns from the students table.
+-- CREATE VIEW dbo.student_overview AS 
+-- SELECT id, name, grade
+-- FROM students;
+
+
+-- 2. Query the student_overview view to verify it displays the correct data.
+-- SELECT * FROM student_overview;
+
+
+-- 3. Modify the view to include a calculated field that shows age categorized as 'Minor' if the age is less than 18, and 'Adult' otherwise.
+-- DROP VIEW IF EXISTS student_overview;
+
+-- CREATE VIEW student_overview AS
+-- SELECT 
+--     id,
+--     name,
+--     grade,
+--     CASE
+--         WHEN age < 18 THEN 'Minor'
+--         ELSE 'Adult'
+--     END AS age_category
+-- FROM students;
+
+-- SELECT * FROM student_overview;
+
+
+-- *******************************************************
+
+
+-- 5) Stored Procedures
+
+-- 1. Create a stored procedure named add_student that takes the name, age, and grade as parameters and inserts a new record into the students table.
+-- CREATE PROCEDURE add_student
+--     @student_id INTEGER,
+--     @student_name VARCHAR(50),
+--     @student_age INT,
+--     @student_grade VARCHAR(10)
+-- AS
+--     SET NOCOUNT ON;
+--     INSERT INTO students (ID, name, age, grade) 
+--     VALUES (
+--         @student_id,
+--         @student_name,
+--         @student_age,
+--         @student_grade);
+
+
+-- 2. Run the stored procedure to add a new student.
+-- EXECUTE add_student @student_id = 1, @student_name = 'Alice Johnson', @student_age = 17, @student_grade = '12th Grade';
